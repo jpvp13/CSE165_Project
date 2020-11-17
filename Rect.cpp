@@ -34,6 +34,11 @@ void Rect::draw(float z) const {
 	glEnd();
 }
 
+//addition
+void Rect::redraw(){
+    glutPostRedisplay();
+}
+//###################
 
 void Rect::setY(float y){
 	this-> y = y;
