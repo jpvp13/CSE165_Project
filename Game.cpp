@@ -6,6 +6,7 @@ Game::Game(){
 }
 
 void Game::drawgame(){
-    frog.playerDraw();
+    objs.playerDraw();
+    objs.logDraw();
 }
 

@@ -1,6 +1,6 @@
 #pragma once
 
-#include "player.h"
+#include "Entity.h"
 
 
 #if defined WIN32
@@ -14,7 +14,7 @@
 
 struct Game{
 
-    player frog;
+    Entity objs;
 
 public:
     Game();

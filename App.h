@@ -6,7 +6,7 @@
 #include "Rect.h"
 #include "Circle.h"
 #include "TexRect.h"
-#include "player.h"
+#include "Entity.h"
 #include "Game.h"
 
 class App: public GlutApp {
