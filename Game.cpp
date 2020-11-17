@@ -7,14 +7,16 @@ Game::Game(){
 }
 
 void Game::drawgame(){
-    frog.playerDraw();
+    
     log.logDraw();
+    car.carDraw();
+    frog.playerDraw();  //need to print last so user shows up ontop of objects
 }
 
 void Game::handles(unsigned char key){  //this physically handles the frog moving during the game
     if(key == 'w'){
         frog.moveUp();
-        frog.redraw();  //this comes from newly created func in 
+        frog.redraw();  //this comes from newly created func in Rect
         std::cout << "Hi im moving up in Game.cpp" << std::endl;
     } else if(key == 'a'){
         frog.moveLeft();
