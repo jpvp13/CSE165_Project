@@ -2,7 +2,7 @@
 #include <deque>
 #include "App.h"
 
-#include "player.h"
+#include "Entity.h"
 
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
@@ -27,6 +27,7 @@ void App::keyDown(unsigned char key, float x, float y){
 }
 
 App::~App(){   
+    delete game;
     
     std::cout << "Exiting..." << std::endl;
 }
