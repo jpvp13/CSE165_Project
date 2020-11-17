@@ -1,15 +1,20 @@
 #ifndef App_h
 #define App_h
 
-#include <vector>
+#include <deque>
 #include "GlutApp.h"
 #include "Rect.h"
 #include "Circle.h"
 #include "TexRect.h"
+#include "player.h"
+#include "Game.h"
 
 class App: public GlutApp {
 
-std::vector<Shape*> shapes;
+// std::vector<Shape*> shapes;
+// std::deque<player*> frog;
+    // std::deque<player*> player;
+    Game* game;
 
 public:
     
