@@ -10,6 +10,8 @@ void Game::drawgame(){
     
     log.logDraw();
     car.carDraw();
+    truck.truckDraw();
+    river.riverDraw();
     frog.playerDraw();  //need to print last so user shows up ontop of objects
 }
 
