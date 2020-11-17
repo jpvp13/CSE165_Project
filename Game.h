@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Entity.h"
+#include "Rect.h"
 
 
 #if defined WIN32
@@ -14,17 +15,20 @@
 
 struct Game{
 
-    Entity objs;
+    Entity frog;
+    Entity log;
 
 public:
     Game();
 
     void drawgame();
+
+    // void handles(unsigned char key, float x, float y);
     void handles(unsigned char key);
 
-    void up();
-    void left();
-    void right();
+    // void up();
+    // void left();
+    // void right();
 
 
 };

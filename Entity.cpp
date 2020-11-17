@@ -1,6 +1,7 @@
 #include <iostream>
 // #include "App.h"
 #include "Entity.h"
+#include "GlutApp.h"
 
 
 #if defined WIN32
@@ -21,5 +22,19 @@ void Entity::playerDraw(){
 }
 
 void Entity::logDraw(){
-log[0]->draw();
+    log[0]->draw();
+}
+
+void Entity::moveUp(){
+    // frog[0]->setY(frog[0]->getY() + 0.1);
+    frog[0]->setY(frog[0]->getY() + 0.1);
+    // std::cout << "Clicked in Entity" << std::endl;
+}
+
+void Entity::moveLeft(){
+    frog[0]->setX(frog[0]->getX() - 0.1);
+}
+
+void Entity::moveRight(){
+    frog[0]->setX(frog[0]->getX() + 0.1);
 }
