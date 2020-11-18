@@ -26,3 +26,4 @@ stb_image_aug.o
 TexRect.d
 TexRect.o
 .DS_Store
+settings.json
