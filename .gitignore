@@ -25,3 +25,4 @@ stb_image_aug.d
 stb_image_aug.o
 TexRect.d
 TexRect.o
+.DS_Store
