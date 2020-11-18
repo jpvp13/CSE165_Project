@@ -29,6 +29,8 @@ Entity::Entity(){
     truck.push_back(new Rect(0.0, 0.6, 0.2, 0.2, 1, 0, 0)); //how to create another object
 
     river.push_front(new Rect(-1, 0.2, 5, 0.4, 0.0, 0.0, 1));
+
+    street.push_front(new Rect(-0.3, -0.4, 0.3, 0.2, 1, 0, 0));
 }
 
 void Entity::playerDraw(){
@@ -51,6 +53,14 @@ void Entity::truckDraw(){
 
 void Entity::riverDraw(){
     river[0]->draw();
+}
+
+void Entity::streetDraw(){
+    street[0]->draw();
+}
+
+void Entity::grassDraw(){
+    grass[0]->draw();
 }
 
 
