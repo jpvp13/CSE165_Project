@@ -5,12 +5,7 @@
 
 
 struct Game{
-
-    Entity frog;
-    Entity log;
-    Entity car;
-    Entity truck;
-    Entity river;
+    Entity Obj; //only 1 instance is needed to create all my objects
 
 public:
     Game();
@@ -19,10 +14,6 @@ public:
 
     // void handles(unsigned char key, float x, float y);
     void handles(unsigned char key);
-
-    // void up();
-    // void left();
-    // void right();
 
 
 };

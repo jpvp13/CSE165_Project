@@ -13,6 +13,8 @@ class Entity: public Rect{
     std::deque<Rect*> car;
     std::deque<Rect*> truck;
     std::deque<Rect*> river;
+    std::deque<Rect*> street;
+    std::deque<Rect*> grass;
 
 
 public:
@@ -22,6 +24,8 @@ public:
     void carDraw();
     void truckDraw();
     void riverDraw();
+    void streetDraw();
+    void grassDraw();
 
     void moveUp();
     void moveLeft();
