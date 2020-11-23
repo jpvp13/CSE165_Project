@@ -16,22 +16,36 @@ void Game::drawgame(){
     
 }
 
-void Game::handles(unsigned char key){  //this physically handles the frog moving during the game
+void Game::handles(unsigned char key, float x, float y){  //this physically handles the frog moving during the game
     if(key == 'w'){
+
+        Obj.collisionDetection(x, y);
         Obj.moveUp();
         Obj.redraw(); //this comes from newly created func in Rect
         // frog.moveUp();
         // frog.redraw();  
         std::cout << "Hi im moving up in Game.cpp" << std::endl;
     } else if(key == 'a'){
+        Obj.collisionDetection(x, y);
+        
         Obj.moveLeft();
         Obj.redraw(); //this comes from newly created func in Rect
 
         std::cout << "Hi im moving Left in Game.cpp" << std::endl;
     } else if(key == 'd'){
+
+        Obj.collisionDetection(x, y);
         Obj.moveRight();
         Obj.redraw(); //this comes from newly created func in Rect
 
         std::cout << "Hi im moving Right in Game.cpp" << std::endl;
     }
+}
+
+void Game::handleCollision(float x, float y){
+
+    Obj.collisionDetection(x, y);
+    std::cout << "collsion in game.cpp" << std::endl;
+    
+
 }

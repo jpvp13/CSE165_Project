@@ -24,7 +24,7 @@ void App::keyDown(unsigned char key, float x, float y){
     if (key == 27){
         exit(0);
     }
-    game->handles(key);
+    game->handles(key, x, y);
 }
 
 App::~App(){   

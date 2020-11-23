@@ -60,3 +60,14 @@ bool Rect::contains(float x, float y) const{
 	return x >= this->x && x <= this->x + w && y <= this->y && y >= this->y - h;
 }
 
+//New additions
+float Rect::getW() const {
+	return w;
+}
+
+float Rect::getH() const {
+	return h;
+}
+
+//########################
+
