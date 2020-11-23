@@ -20,15 +20,15 @@ Entity::Entity(){
     frog.push_front(new Rect(0.0, -0.8, 0.2, 0.2, 1, 1 ,1));
     
     
-    log.push_front(new Rect(0.5, -0.4, 0.3, 0.2, 0.82, 0.41 ,0.18));
-    log.push_back(new Rect(-0.3, -0.4, 0.3, 0.2, 1, 0, 0)); //how to create another object
+    log.push_front(new Rect(-0.5, 0.2, 0.3, 0.2, 0.82, 0.41 ,0.18));
+    // log.push_back(new Rect(-0.3, -0.4, 0.3, 0.2, 1, 0, 0)); //how to create another object
 
     car.push_front(new Rect(0.5, 0.5, 0.2, 0.2, 0.44, 0.50, 0.56));
 
     truck.push_front(new Rect(0.5, 0.8, 0.2, 0.2, 0.6, 0.7, 0.66));
-    truck.push_back(new Rect(0.0, 0.6, 0.2, 0.2, 1, 0, 0)); //how to create another object
+    // truck.push_back(new Rect(0.0, 0.6, 0.2, 0.2, 1, 0, 0)); //how to create another object
 
-    river.push_front(new Rect(-1, 0.2, 5, 0.4, 0.0, 0.0, 1));
+    river.push_front(new Rect(-1, 0.2, 5, 0.4, 0.0, 0.0, 1));       //! RIVER IS FRIENDLY
 
     street.push_front(new Rect(-0.3, -0.4, 0.3, 0.2, 1, 0, 0));
 }
@@ -47,8 +47,8 @@ void Entity::carDraw(){
 }
 
 void Entity::truckDraw(){
-    truck[1]->draw();
-    truck[0]->draw();   //how to push new object on screen
+    truck[0]->draw();
+    // truck[0]->draw();   //how to push new object on screen
 }
 
 void Entity::riverDraw(){
@@ -66,34 +66,56 @@ void Entity::grassDraw(){
 
 void Entity::moveUp(){
     frog[0]->setY(frog[0]->getY() + 0.1);
+    std::cout << "My X is " << frog[0]->getX() << " and my Y is " << frog[0]->getY() << std::endl;
 }
 
 void Entity::moveLeft(){
     frog[0]->setX(frog[0]->getX() - 0.1);
+    std::cout << "My X is " << frog[0]->getX() << " and my Y is " << frog[0]->getY() << std::endl;
 }
 
 void Entity::moveRight(){
     frog[0]->setX(frog[0]->getX() + 0.1);
+    std::cout << "My X is " << frog[0]->getX() << " and my Y is " << frog[0]->getY() << std::endl;
 }
 
-bool Entity::collisionDetection(float x, float y){
+void Entity::moveDown(){
+    frog[0]->setY(frog[0]->getY() - 0.1);
+    std::cout << "My X is " << frog[0]->getX() << " and my Y is " << frog[0]->getY() << std::endl;
+}
 
-  if(frog[0]->getY() >= log[0]->getY() - log[0]->getH() && (frog[0]->getY() - frog[0]->getH() <= log[0]->getY() + 0.01) && 
-    (frog[0]->getX() <= log[0]->getX() + log[0]->getW()) && (frog[0]->getX() + frog[0]->getW() >= log[0]->getX() + 0.01)){
-        std::cout << "Oops...I hit the 1st log" << std::endl;
+
+void Entity::collisionDetection(float x, float y){
+
+
+//  if((frog[0]->getY() >= log[0]->getY() - log[0]->getH() + 0.001) && (frog[0]->getY() - frog[0]->getH() <= log[0]->getY() - 0.001) && 
+//     (frog[0]->getX() <= log[0]->getX() + log[0]->getW() - 0.001) && (frog[0]->getX() + frog[0]->getW() >= log[0]->getX() + 0.001)){
+//         std::cout << "Oops...I hit the 1st log" << std::endl;
+
+//         std::cout << "I hit at X " << frog[0]->getX() << " and Y " << frog[0]->getY() << std::endl;
+//         exit(0);
+//     }
+    if((frog[0]->getY() >= log[0]->getY() - log[0]->getH() + 0.09) && (frog[0]->getY() - frog[0]->getH() <= log[0]->getY() - 0.09) &&   //!This is collision detection for log
+    (frog[0]->getX() <= log[0]->getX() + log[0]->getW() - 0.09) && (frog[0]->getX() + frog[0]->getW() >= log[0]->getX() + 0.09)){
+        std::cout << "Oops...I hit the river" << std::endl;
+
+        std::cout << "I hit at X " << frog[0]->getX() << " and Y " << frog[0]->getY() << std::endl;
+        exit(0);
+        
+    } else if((frog[0]->getY() >= car[0]->getY() - car[0]->getH() + 0.09) && (frog[0]->getY() - frog[0]->getH() <= car[0]->getY() - 0.09) &&    //!This is collision detection for car
+    (frog[0]->getX() <= car[0]->getX() + car[0]->getW() - 0.09) && (frog[0]->getX() + frog[0]->getW() >= car[0]->getX() + 0.09)){
+        std::cout << "Oops...I hit the car" << std::endl;
+
+        std::cout << "I hit at X " << frog[0]->getX() << " and Y " << frog[0]->getY() << std::endl;
+        exit(0);
+        
+    }else if((frog[0]->getY() >= truck[0]->getY() - truck[0]->getH() + 0.09) && (frog[0]->getY() - frog[0]->getH() <= truck[0]->getY() - 0.09) &&     //!This is collision detection for truck
+    (frog[0]->getX() <= truck[0]->getX() + truck[0]->getW() - 0.09) && (frog[0]->getX() + frog[0]->getW() >= truck[0]->getX() + 0.09)){
+        std::cout << "Oops...I hit the truck" << std::endl;
+
+        std::cout << "I hit at X " << frog[0]->getX() << " and Y " << frog[0]->getY() << std::endl;
         exit(0);
         
     }
-    else if (frog[0]->getY() >= log[1]->getY() - log[1]->getH() && (frog[0]->getY() - frog[1]->getH() <= log[0]->getY() + 0.01) && 
-    (frog[0]->getX() <= log[1]->getX() + log[1]->getW()) && (frog[0]->getX() + frog[0]->getW() >= log[1]->getX() + 0.01)){
-        std::cout << "Oops.. I hit the 2nd log" << std::endl;
-        exit(0);
-    }
 
-    // } else if(frog[0]->getY() >= river[0]->getY() - river[0]->getH() && (frog[0]->getY() - frog[1]->getH() <= river[0]->getY() + 0.01) && 
-    // (frog[0]->getX() <= river[0]->getX() + river[0]->getW()) && (frog[0]->getX() + frog[0]->getW() >= river[0]->getX() + 0.01)){
-    //     std::cout << "Oops.. I hit the river" << std::endl;
-    //     exit(0);
-    // }
-    
 }

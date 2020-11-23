@@ -8,10 +8,12 @@ Game::Game(){
 
 void Game::drawgame(){
     
-    Obj.logDraw();
+    
     Obj.carDraw();
     Obj.truckDraw();
     Obj.riverDraw();
+    Obj.streetDraw();
+    Obj.logDraw();
     Obj.playerDraw();  //need to print last so user shows up ontop of objects
     
 }
@@ -22,23 +24,29 @@ void Game::handles(unsigned char key, float x, float y){  //this physically hand
         Obj.collisionDetection(x, y);
         Obj.moveUp();
         Obj.redraw(); //this comes from newly created func in Rect
-        // frog.moveUp();
-        // frog.redraw();  
-        std::cout << "Hi im moving up in Game.cpp" << std::endl;
+
+        // std::cout << "Hi im moving up in Game.cpp" << std::endl;
     } else if(key == 'a'){
+        
         Obj.collisionDetection(x, y);
         
         Obj.moveLeft();
         Obj.redraw(); //this comes from newly created func in Rect
 
-        std::cout << "Hi im moving Left in Game.cpp" << std::endl;
+        // std::cout << "Hi im moving Left in Game.cpp" << std::endl;
     } else if(key == 'd'){
+       
 
         Obj.collisionDetection(x, y);
         Obj.moveRight();
         Obj.redraw(); //this comes from newly created func in Rect
+        
 
-        std::cout << "Hi im moving Right in Game.cpp" << std::endl;
+        // std::cout << "Hi im moving Right in Game.cpp" << std::endl;
+    } else if(key == 's'){
+        Obj.collisionDetection(x, y);
+        Obj.moveDown();
+        Obj.redraw(); //this comes from newly created func in Rect
     }
 }
 
