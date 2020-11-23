@@ -25,6 +25,11 @@ public:
 	float getX() const;
 	void setX(float x);
 
+	//New addition
+	float getW() const ;
+	float getH() const ;
+	//###############
+
 
 	bool contains(float, float) const;
 };

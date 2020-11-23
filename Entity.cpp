@@ -39,7 +39,7 @@ void Entity::playerDraw(){
 
 void Entity::logDraw(){
     log[0]->draw();
-    log[1]->draw(); //how to push new object on screen
+    // log[1]->draw(); //how to push new object on screen   //Update, possibly only 1 log will be drawn
 }
 
 void Entity::carDraw(){
@@ -74,4 +74,26 @@ void Entity::moveLeft(){
 
 void Entity::moveRight(){
     frog[0]->setX(frog[0]->getX() + 0.1);
+}
+
+bool Entity::collisionDetection(float x, float y){
+
+  if(frog[0]->getY() >= log[0]->getY() - log[0]->getH() && (frog[0]->getY() - frog[0]->getH() <= log[0]->getY() + 0.01) && 
+    (frog[0]->getX() <= log[0]->getX() + log[0]->getW()) && (frog[0]->getX() + frog[0]->getW() >= log[0]->getX() + 0.01)){
+        std::cout << "Oops...I hit the 1st log" << std::endl;
+        exit(0);
+        
+    }
+    else if (frog[0]->getY() >= log[1]->getY() - log[1]->getH() && (frog[0]->getY() - frog[1]->getH() <= log[0]->getY() + 0.01) && 
+    (frog[0]->getX() <= log[1]->getX() + log[1]->getW()) && (frog[0]->getX() + frog[0]->getW() >= log[1]->getX() + 0.01)){
+        std::cout << "Oops.. I hit the 2nd log" << std::endl;
+        exit(0);
+    }
+
+    // } else if(frog[0]->getY() >= river[0]->getY() - river[0]->getH() && (frog[0]->getY() - frog[1]->getH() <= river[0]->getY() + 0.01) && 
+    // (frog[0]->getX() <= river[0]->getX() + river[0]->getW()) && (frog[0]->getX() + frog[0]->getW() >= river[0]->getX() + 0.01)){
+    //     std::cout << "Oops.. I hit the river" << std::endl;
+    //     exit(0);
+    // }
+    
 }

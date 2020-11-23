@@ -61,6 +61,22 @@
         "unordered_map": "cpp",
         "utility": "cpp",
         "*.tcc": "cpp",
+<<<<<<< HEAD
+<<<<<<< HEAD
+        "hashtable": "cpp",
+        "__errc": "cpp",
+        "__node_handle": "cpp",
+        "bit": "cpp",
+        "optional": "cpp"
+    }
+}
+=======
         "hashtable": "cpp"
     }
 }
+>>>>>>> 60b014636e7800da82d3384722ded8d3515de204
+=======
+        "hashtable": "cpp"
+    }
+}
+>>>>>>> 60b014636e7800da82d3384722ded8d3515de204

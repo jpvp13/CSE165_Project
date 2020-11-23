@@ -31,6 +31,9 @@ public:
     void moveLeft();
     void moveRight();
 
+    bool collisionDetection(float x, float y);
+
+
 
 
 
