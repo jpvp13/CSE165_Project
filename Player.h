@@ -1,8 +1,6 @@
 #pragma once
 
-// #include <deque>
 #include <vector>
-// #include "GlutApp.h"
 #include "TexRect.h"
 #include "Shape.h"
 #include "Rect.h"
@@ -31,12 +29,6 @@ public:
     friend void timer(int id);
     int interval;
 
-    void logDraw();
-    void carDraw();
-    void truckDraw();
-    void riverDraw();
-    void streetDraw();
-    void grassDraw();
 
     void moveUp();
     void moveLeft();
