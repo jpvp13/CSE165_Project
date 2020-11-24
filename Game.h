@@ -2,10 +2,16 @@
 
 #include "Entity.h"
 #include "Rect.h"
+#include "TexRect.h"
+#include "Player.h"
+#include "Sprite.h"
+// #include "Sprite.h"
 
 
-struct Game{
+class Game{
     Entity Obj; //only 1 instance is needed to create all my objects
+    Player player;
+    // Player* player;
 
 
 

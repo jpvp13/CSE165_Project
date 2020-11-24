@@ -18,20 +18,21 @@ class Entity: public Rect{
 
 
 public:
-    Entity(); //default constructor
-    void playerDraw(); //to draw the player
-    void logDraw();
-    void carDraw();
-    void truckDraw();
-    void riverDraw();
-    void streetDraw();
-    void grassDraw();
+    // Entity(); //default constructor
+    // void playerDraw(); //to draw the player
+    // void logDraw();
+    // void carDraw();
+    // void truckDraw();
+    // void riverDraw();
+    // void streetDraw();
+    // void grassDraw();
 
-    void moveUp();
-    void moveLeft();
-    void moveRight();
+    // void moveUp();
+    // void moveLeft();
+    // void moveRight();
+    // void moveDown();    //this is for debugging purposes
 
-    bool collisionDetection(float x, float y);
+    // void collisionDetection(float x, float y);
 
 
 
