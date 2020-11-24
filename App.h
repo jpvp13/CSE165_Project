@@ -4,10 +4,12 @@
 #include <deque>
 #include "GlutApp.h"
 #include "Rect.h"
-#include "Circle.h"
+
 #include "TexRect.h"
-#include "Entity.h"
+// #include "Entity.h"
 #include "Game.h"
+#include "Player.h"
+#include "Sprite.h"
 
 class App: public GlutApp {
 

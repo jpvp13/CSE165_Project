@@ -3,6 +3,8 @@
 #include "App.h"
 
 #include "Entity.h"
+// #include "Sprite.h"
+
 
 
 App::App(int argc, char** argv, int width, int height, const char* title): GlutApp(argc, argv, width, height, title){
