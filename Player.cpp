@@ -25,7 +25,7 @@ void timer(int id){
 Player::Player(){
     // Sprite(const char* filename, int rows, int cols, float x, float y, float w, float h)
 
-    frog = new Sprite("images/turtleSprite.png", 1,4, 0.0, -0.7, 0.3, 0.3);
+    frog = new Sprite("images/turtleSprite.png", 1,4, 0.0, -0.8, 0.2, 0.2);
     interval = 250; //since there are only 4 frames and only change 2 things between the 4
     singleton = this;
     timer(1);
@@ -54,6 +54,12 @@ void Player::moveRight(){
 void Player::moveDown(){
     frog->setY(frog->getY() - 0.1);
     // std::cout << "My X is " << frog[0]->getX() << " and my Y is " << frog[0]->getY() << std::endl;
+}
+
+Player::~Player(){
+    delete frog;
+
+    std::cout << "Deleting Player..." << std::endl;
 }
 
 

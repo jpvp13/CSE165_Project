@@ -11,13 +11,15 @@ Game::Game(){
 void Game::drawgame(){
     // objects.carDraw();
     // objects.truckDraw();
-    objects.riverDraw();
-    // objects.streetDraw();
+    background.stagnantColor();
+    background.riverDraw();
+    background.streetDraw();
     objects.logDraw();
+    // objects.carDraw();
 
 
     player.frogDraw();  //need to print last so user shows up ontop of objects
-
+    
     
 }
 
@@ -62,3 +64,10 @@ void Game::handleCollision(float x, float y){
     
 
 }
+
+// Game::~Game(){   
+//     delete & background;
+//     delete & objects;
+    
+//     std::cout << "Deleting Game..." << std::endl;
+// }
