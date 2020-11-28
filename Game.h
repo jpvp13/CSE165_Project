@@ -4,7 +4,7 @@
 // #include "Rect.h"
 // #include "TexRect.h"
 #include "Player.h"
-// #include "Sprite.h"
+#include "Background.h"
 #include "GameObj.h"
 
 
@@ -12,6 +12,7 @@
 class Game{
     Player player;
     GameObj objects;
+    Background background;
     // Player* player;
 
 
@@ -24,5 +25,7 @@ public:
     void handles(unsigned char key, float x, float yt);
 
     void handleCollision(float x, float y);
+
+    // ~Game();
 
 };
