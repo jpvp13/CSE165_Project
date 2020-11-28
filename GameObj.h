@@ -8,10 +8,13 @@
 
 class GameObj: public Rect{
     TexRect* log;
-    TexRect* river;
+    // TexRect* car;
+
 
 public:
     GameObj();
     void logDraw();
-    void riverDraw();
+    void carDraw();
+
+    ~GameObj();
 };
