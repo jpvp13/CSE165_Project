@@ -1,1 +1,2 @@
-player.o: player.cpp player.h GlutApp.h Rect.h Shape.h
+Player.o: Player.cpp Player.h TexRect.h Rect.h Shape.h SOIL.h Sprite.h \
+  GlutApp.h
