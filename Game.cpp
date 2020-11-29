@@ -2,7 +2,7 @@
 #include "Game.h"
 #include "GlutApp.h"
 // #include "Player.h"
-// #include "GameObjs.h"
+// #include "GameObj.h"
 
 Game::Game(){
 
@@ -26,41 +26,61 @@ void Game::drawgame(){
 void Game::handles(unsigned char key, float x, float y){  //this physically handles the frog moving during the game
     if(key == 'w'){
 
-        // Obj.collisionDetection(x, y);
-
         player.moveUp();
+
+        
+
+        // handleCollision(x,y);
+
         player.redraw();
 
         // std::cout << "Hi im moving up in Game.cpp" << std::endl;
     } else if(key == 'a'){
         
-        // player.collisionDetection(x, y);
-
         player.moveLeft();
+
+        // if(objects.objectCollision(x, y) == true){
+        //     exit(0);
+        // }     
+        
+        // handleCollision(x,y);
+
         player.redraw();    //this comes from newly created func in Rect
 
         // std::cout << "Hi im moving Left in Game.cpp" << std::endl;
     } else if(key == 'd'){
-       
-        // player.collisionDetection(x, y);
-   
+        
         player.moveRight();
+
+        // if(objects.objectCollision(x, y)){
+        //     exit(0);
+        // }
+        // handleCollision(x,y);
+   
         player.redraw();    //this comes from newly created func in Rect
         
 
         // std::cout << "Hi im moving Right in Game.cpp" << std::endl;
     } else if(key == 's'){
-        // player.collisionDetection(x, y);
 
         player.moveDown();
+        
+
+        // if(objects.objectCollision(x, y)){
+        //     exit(0);
+        // }
+        // handleCollision(x,y);
+
         player.redraw();    //this comes from newly created func in Rect
     }
 }
 
 void Game::handleCollision(float x, float y){
 
-    // player.collisionDetection(x, y);
-    // std::cout << "collsion in game.cpp" << std::endl;
+    // objects.objectCollision(x, y);
+    // std::cout << "I hit something :)... in Game.cpp" << std::endl;
+
+    // exit(0);
     
 
 }

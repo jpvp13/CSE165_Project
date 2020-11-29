@@ -2,11 +2,13 @@
 // #include "App.h"
 #include "Player.h"
 #include "GlutApp.h"
+#include "GameObj.h"
 // #include "Rect.h"
 // #include "Sprite.h"
 
 
 static Player* singleton;
+GameObj* log;
 
 void timer(int id){
     singleton->frog->advance();
@@ -33,7 +35,8 @@ Player::Player(){
 }
 
 void Player::frogDraw(){
-        frog->draw();
+    frog->draw();
+
 }
 
 void Player::moveUp(){
@@ -63,29 +66,39 @@ Player::~Player(){
 }
 
 
-// void Player::collisionDetection(float x, float y){
+bool Player::collisionDetection(float x, float y){
 
-//     // if((frog[0][0]->getY() >= log[0]->getY() - log[0]->getH() + 0.09) && (frog[0][0]->getY() - frog[0][0]->getH() <= log[0]->getY() - 0.09) &&   //!This is collision detection for log
-//     // (frog[0][0]->getX() <= log[0]->getX() + log[0]->getW() - 0.09) && (frog[0][0]->getX() + frog[0][0]->getW() >= log[0]->getX() + 0.09)){
-//     //     std::cout << "Oops...I hit the river" << std::endl;
+    // std::cout << "The X of log is " << log->getX() << " and the Y is " << log->getY() << std::endl;
 
-//     //     std::cout << "I hit at X " << frog[0][0]->getX() << " and Y " << frog[0][0]->getY() << std::endl;
-//     //     exit(0);
+    // if((frog->getY() >= log->getY() - log->getH() + 0.09) && (frog->getY() - frog->getH() <= log->getY() - 0.09) &&
+    // (frog->getX() <= log->getX() + log->getW() - 0.09) && (frog->getY() + frog->getW() >= log->getX() + 0.09)){
+    //     std::cout << "Oops...I hit the log" << std::endl;
+
+    //     std::cout << "I hit at X " << frog->getX() << " and Y " << frog->getY() << std::endl;
+    // }
+
+    // if((frog->getY() >= log->getY() - log->getH() + 0.09) && (frog->getY() - frog->getH() <= log->getY() - 0.09) &&   //!This is collision detection for log
+    // (frog->getX() <= log->getX() + log->getW() - 0.09) && (frog->getX() + frog->getW() >= log->getX() + 0.09)){
+    //     std::cout << "Oops...I hit the log" << std::endl;
+
+    //     std::cout << "I hit at X " << frog->getX() << " and Y " << frog->getY() << std::endl;
+    //     exit(0);
+    // }
         
-//     // } else if((frog[0][0]->getY() >= car[0]->getY() - car[0]->getH() + 0.09) && (frog[0][0]->getY() - frog[0][0]->getH() <= car[0]->getY() - 0.09) &&    //!This is collision detection for car
-//     // (frog[0][0]->getX() <= car[0]->getX() + car[0]->getW() - 0.09) && (frog[0][0]->getX() + frog[0][0]->getW() >= car[0]->getX() + 0.09)){
-//     //     std::cout << "Oops...I hit the car" << std::endl;
+    // } else if((frog[0][0]->getY() >= car[0]->getY() - car[0]->getH() + 0.09) && (frog[0][0]->getY() - frog[0][0]->getH() <= car[0]->getY() - 0.09) &&    //!This is collision detection for car
+    // (frog[0][0]->getX() <= car[0]->getX() + car[0]->getW() - 0.09) && (frog[0][0]->getX() + frog[0][0]->getW() >= car[0]->getX() + 0.09)){
+    //     std::cout << "Oops...I hit the car" << std::endl;
 
-//     //     std::cout << "I hit at X " << frog[0][0]->getX() << " and Y " << frog[0][0]->getY() << std::endl;
-//     //     exit(0);
+    //     std::cout << "I hit at X " << frog[0][0]->getX() << " and Y " << frog[0][0]->getY() << std::endl;
+    //     exit(0);
         
-//     // }else if((frog[0][0]->getY() >= truck[0]->getY() - truck[0]->getH() + 0.09) && (frog[0][0]->getY() - frog[0][0]->getH() <= truck[0]->getY() - 0.09) &&     //!This is collision detection for truck
-//     // (frog[0][0]->getX() <= truck[0]->getX() + truck[0]->getW() - 0.09) && (frog[0][0]->getX() + frog[0][0]->getW() >= truck[0]->getX() + 0.09)){
-//     //     std::cout << "Oops...I hit the truck" << std::endl;
+    // }else if((frog[0][0]->getY() >= truck[0]->getY() - truck[0]->getH() + 0.09) && (frog[0][0]->getY() - frog[0][0]->getH() <= truck[0]->getY() - 0.09) &&     //!This is collision detection for truck
+    // (frog[0][0]->getX() <= truck[0]->getX() + truck[0]->getW() - 0.09) && (frog[0][0]->getX() + frog[0][0]->getW() >= truck[0]->getX() + 0.09)){
+    //     std::cout << "Oops...I hit the truck" << std::endl;
 
-//     //     std::cout << "I hit at X " << frog[0][0]->getX() << " and Y " << frog[0][0]->getY() << std::endl;
-//     //     exit(0);
+    //     std::cout << "I hit at X " << frog[0][0]->getX() << " and Y " << frog[0][0]->getY() << std::endl;
+    //     exit(0);
         
-//     // }
+    // }
 
-// }
+}

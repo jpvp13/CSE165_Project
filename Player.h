@@ -5,13 +5,15 @@
 #include "Shape.h"
 #include "Rect.h"
 #include "Sprite.h"
+#include "GameObj.h"
 
 
 class Player: public Rect{
 
     // static Player* singleton;
-
+    // std::vector<TexRect*> log;
     Sprite* frog;
+
 
 public:
     Player(); //default constructor
@@ -26,7 +28,7 @@ public:
     void moveRight();
     void moveDown(); 
 
-    void collisionDetection(float x, float y);
+    bool collisionDetection(float x, float y);
 
     friend void timer(int id);
 
