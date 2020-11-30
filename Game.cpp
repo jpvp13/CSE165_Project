@@ -9,12 +9,13 @@ Game::Game(){
 }
 
 void Game::drawgame(){
-    // objects.carDraw();
+    
     // objects.truckDraw();
     background.stagnantColor();
     background.riverDraw();
     background.streetDraw();
-    objects.logDraw();
+    car.carDraw();
+    log.logDraw();
     // objects.carDraw();
 
 
@@ -24,6 +25,11 @@ void Game::drawgame(){
 }
 
 void Game::handles(unsigned char key, float x, float y){  //this physically handles the frog moving during the game
+    // if(this->player >= 1){
+    //     std::cout << "The Y at this moment is ... " << y << std::endl;
+    //     std::cout << "I hit the top edge! Exiting..." << std::endl;
+    //     exit(0);
+    // }
     if(key == 'w'){
 
         player.moveUp();
@@ -42,7 +48,7 @@ void Game::handles(unsigned char key, float x, float y){  //this physically hand
         // if(objects.objectCollision(x, y) == true){
         //     exit(0);
         // }     
-        
+
         // handleCollision(x,y);
 
         player.redraw();    //this comes from newly created func in Rect
@@ -85,9 +91,10 @@ void Game::handleCollision(float x, float y){
 
 }
 
-// Game::~Game(){   
-//     delete & background;
-//     delete & objects;
-    
-//     std::cout << "Deleting Game..." << std::endl;
-// }
+Game::~Game(){   
+    // delete &background;
+    // delete &car;
+    // delete &log;
+
+    std::cout << "Deleting Game..." << std::endl;
+}
