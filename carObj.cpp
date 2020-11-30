@@ -1,39 +1,44 @@
 #include <iostream>
-#include "GameObj.h"
+#include "carObj.h"
 #include "GlutApp.h"
 
 //! h file has instance of frog and able to print out the coordinates as a test... need to figure out how to do collision detection cuzzzzz.... it no working
 
-GameObj::GameObj(){
+carObj::carObj(){
 
-    log = new Sprite("images/Log.png", 1, 4, 0.0, 0.1, 0.55, 0.55);
-    // car = new TexRect("images/YellowCar.png", 1.0, -0.6, 0.8, 0.8);
+    // yellowCar = new Sprite("images/YellowCar.png", 1, 1, -0.9, -0.25, 0.8, 0.8);
+    // greenCar = new Sprite("images/GreenCar.png", 1, 1, -0.9, 0.7, 0.8, 0.8);
+
+    fireTruck = new TexRect("images/fireTruck_Top.png", -0.9, 0.93, 0.8, 0.8);
+    greenCar = new TexRect("images/GreenCar.png", 0.2, 0.78, 0.7, 0.7);
+
+    blueCar = new TexRect("images/blueCar_bottom.png", 0.5, -0.15, 0.8, 0.8);
+    yellowCar = new TexRect("images/YellowCar.png", -0.9, -0.25, 0.8, 0.8);
+    
     //car make object
     //truck make object
 }
 
-void GameObj::logDraw(){
-    log->draw();
-    // std::cout << "The X of log is " << log->getX() << " and the Y is " << log->getY() << std::endl;
-
-    // std::cout << "The X of log is " << frog->getX() << " and the Y is " << frog->getY() << std::endl;
-}
-
-void GameObj::carDraw(){
-    // car->draw();
+void carObj::carDraw(){
+    yellowCar->draw();
+    greenCar->draw();
+    fireTruck->draw();
+    blueCar->draw();
 }
 
 
 
-GameObj::~GameObj(){
-    delete log;
-    // delete car;
+carObj::~carObj(){
+    delete yellowCar;
+    delete greenCar;
+    delete blueCar;
+    delete fireTruck;
 
-    std::cout << "Deleting Objects..." << std::endl;
+    std::cout << "Deleting Car Objects..." << std::endl;
 }
 
 
-bool GameObj::objectCollision(float x, float y){
+// bool GameObj::objectCollision(float x, float y){
 
     // if((frog->getY() >= log->getY() - log->getH() + 0.09) && (frog->getY() - frog->getH() <= log->getY() - 0.09) &&
     // (frog->getX() <= log->getX() + log->getW() - 0.09) && (frog->getY() + frog->getW() >= log->getX() + 0.09)){
@@ -48,7 +53,7 @@ bool GameObj::objectCollision(float x, float y){
 
     //     std::cout << "I hit at X " << frog->getX() << " and Y " << frog->getY() << std::endl;
     // }
-} 
+// } 
 
 
 // make collision detection here for each object, not the user... Maybe collision detection may work better on the user though...

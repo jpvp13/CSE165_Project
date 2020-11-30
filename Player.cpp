@@ -2,13 +2,13 @@
 // #include "App.h"
 #include "Player.h"
 #include "GlutApp.h"
-#include "GameObj.h"
+#include "logObj.h"
 // #include "Rect.h"
 // #include "Sprite.h"
 
 
 static Player* singleton;
-GameObj* log;
+logObj* log;
 
 void timer(int id){
     singleton->frog->advance();

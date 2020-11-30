@@ -5,14 +5,17 @@
 // #include "TexRect.h"
 #include "Player.h"
 #include "Background.h"
-#include "GameObj.h"
+#include "logObj.h"
+#include "carObj.h"
 
 
 
 class Game{
     Player player;
-    GameObj objects;
+    logObj objects;
     Background background;
+    carObj car;
+    logObj log;
     // Player* player;
 
 
@@ -26,6 +29,6 @@ public:
 
     void handleCollision(float x, float y);
 
-    // ~Game();
+    ~Game();
 
 };

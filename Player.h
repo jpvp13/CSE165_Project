@@ -5,7 +5,8 @@
 #include "Shape.h"
 #include "Rect.h"
 #include "Sprite.h"
-#include "GameObj.h"
+#include "carObj.h"
+#include "logObj.h"
 
 
 class Player: public Rect{
