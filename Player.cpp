@@ -1,14 +1,17 @@
 #include <iostream>
+#include <vector>
 // #include "App.h"
 #include "Player.h"
 #include "GlutApp.h"
-#include "logObj.h"
+// #include "logObj.h"
 // #include "Rect.h"
 // #include "Sprite.h"
 
 
 static Player* singleton;
-logObj* log;
+// logObj* log;
+
+// std::vector<int>::iterator log = log.begin();
 
 void timer(int id){
     singleton->frog->advance();
@@ -68,14 +71,23 @@ Player::~Player(){
 
 bool Player::collisionDetection(float x, float y){
 
-    // std::cout << "The X of log is " << log->getX() << " and the Y is " << log->getY() << std::endl;
+    std::cout << "Test Hit" << std::endl;
+
+    if(frog->getY() >= singleton->log->getY()){
+        return true;
+    }
+    // std::cout << "value of log->getX() is " << (&log->getX()) << "and the value of getY is " << log->getY() << std::endl;
 
     // if((frog->getY() >= log->getY() - log->getH() + 0.09) && (frog->getY() - frog->getH() <= log->getY() - 0.09) &&
     // (frog->getX() <= log->getX() + log->getW() - 0.09) && (frog->getY() + frog->getW() >= log->getX() + 0.09)){
     //     std::cout << "Oops...I hit the log" << std::endl;
+    //     return true;
 
-    //     std::cout << "I hit at X " << frog->getX() << " and Y " << frog->getY() << std::endl;
     // }
+
+
+
+
 
     // if((frog->getY() >= log->getY() - log->getH() + 0.09) && (frog->getY() - frog->getH() <= log->getY() - 0.09) &&   //!This is collision detection for log
     // (frog->getX() <= log->getX() + log->getW() - 0.09) && (frog->getX() + frog->getW() >= log->getX() + 0.09)){

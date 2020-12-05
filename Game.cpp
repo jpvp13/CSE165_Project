@@ -1,6 +1,7 @@
 #include <iostream>
 #include "Game.h"
 #include "GlutApp.h"
+#include <exception>
 // #include "Player.h"
 // #include "GameObj.h"
 
@@ -9,34 +10,35 @@ Game::Game(){
 }
 
 void Game::drawgame(){
-    
-    // objects.truckDraw();
+
+        // objects.truckDraw();
     background.stagnantColor();
     background.riverDraw();
     background.streetDraw();
     car.carDraw();
     log.logDraw();
-    // objects.carDraw();
-
-
+    // objects.carDraw();   
     player.frogDraw();  //need to print last so user shows up ontop of objects
-    
-    
 }
 
 void Game::handles(unsigned char key, float x, float y){  //this physically handles the frog moving during the game
-    // if(this->player >= 1){
-    //     std::cout << "The Y at this moment is ... " << y << std::endl;
-    //     std::cout << "I hit the top edge! Exiting..." << std::endl;
-    //     exit(0);
-    // }
+    
     if(key == 'w'){
 
+        
         player.moveUp();
+
+
+        // player.collisionDetection(x,y);
 
         
 
-        // handleCollision(x,y);
+        if(log.logCollision(player.getX(),player.getY()) == true){
+            std::cout << "Checking player x and y within Game.cpp ... " << player.getX() << ", " << player.getY() << std::endl;
+            exit(0);
+        }
+
+        
 
         player.redraw();
 
@@ -45,6 +47,7 @@ void Game::handles(unsigned char key, float x, float y){  //this physically hand
         
         player.moveLeft();
 
+
         // if(objects.objectCollision(x, y) == true){
         //     exit(0);
         // }     
@@ -52,6 +55,7 @@ void Game::handles(unsigned char key, float x, float y){  //this physically hand
         // handleCollision(x,y);
 
         player.redraw();    //this comes from newly created func in Rect
+
 
         // std::cout << "Hi im moving Left in Game.cpp" << std::endl;
     } else if(key == 'd'){
@@ -77,13 +81,15 @@ void Game::handles(unsigned char key, float x, float y){  //this physically hand
         // }
         // handleCollision(x,y);
 
-        player.redraw();    //this comes from newly created func in Rect
+        player.redraw();    //this comes from newly created func in Rec
     }
 }
 
-void Game::handleCollision(float x, float y){
+bool Game::handleCollision(float x, float y){
 
-    // objects.objectCollision(x, y);
+    if(log.logCollision(x, y) == true){
+        std::cout << "I died!" << std::endl;
+    }
     // std::cout << "I hit something :)... in Game.cpp" << std::endl;
 
     // exit(0);
@@ -91,10 +97,10 @@ void Game::handleCollision(float x, float y){
 
 }
 
-Game::~Game(){   
+// Game::~Game(){   
     // delete &background;
     // delete &car;
     // delete &log;
 
-    std::cout << "Deleting Game..." << std::endl;
-}
+    // std::cout << "Deleting Game..." << std::endl;
+// }

@@ -1,12 +1,13 @@
 #pragma once
 
+#include <deque>
 #include <vector>
 #include "TexRect.h"
 #include "Shape.h"
 #include "Rect.h"
 #include "Sprite.h"
 #include "carObj.h"
-#include "logObj.h"
+// #include "logObj.h"
 
 
 class Player: public Rect{
@@ -14,6 +15,7 @@ class Player: public Rect{
     // static Player* singleton;
     // std::vector<TexRect*> log;
     Sprite* frog;
+    TexRect* log;
 
 
 public:
