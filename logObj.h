@@ -8,12 +8,16 @@
 #include "Player.h"
 
 
-extern Sprite& user;
 
 
 
 class logObj: public Rect{
-    TexRect* log;
+
+    TexRect* logBottom;
+    TexRect* logTop;
+
+
+    unsigned int interval;
     
     // Sprite* user;
 
@@ -21,6 +25,8 @@ class logObj: public Rect{
 public:
     logObj();
     void logDraw();
+
+    friend void logTimer(int id);
 
     bool logCollision(float x, float y);
 
