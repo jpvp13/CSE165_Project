@@ -12,10 +12,10 @@
 
 class Game{
     Player player;
-    logObj objects;
-    Background background;
-    carObj car;
     logObj log;
+    carObj car;
+    Background background;
+
     // Player* player;
 
 
@@ -27,8 +27,8 @@ public:
 
     void handles(unsigned char key, float x, float yt);
 
-    void handleCollision(float x, float y);
+    bool handleCollision(float x, float y);
 
-    ~Game();
+    // ~Game();
 
 };

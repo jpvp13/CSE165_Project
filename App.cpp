@@ -2,7 +2,7 @@
 #include <deque>
 #include "App.h"
 
-#include "Entity.h"
+// #include "Entity.h"
 // #include "Sprite.h"
 
 
