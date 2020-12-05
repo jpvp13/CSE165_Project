@@ -1,22 +1,42 @@
 #include <iostream>
 #include "logObj.h"
 #include "GlutApp.h"
-// #include "Player.h"
 
 
+static logObj* singleton;
+
+
+void logTimer(int id){
+    singleton->logTop->setX(singleton->logTop->getX() - 0.03);
+    singleton->logBottom->setX(singleton->logBottom->getX() + 0.03);
+
+    if (singleton->logTop->getX() < -2){
+        
+        singleton->logTop->setX(singleton->logTop->getX() + 4);
+    }
+
+    if (singleton->logBottom->getX() > 1.2){
+        
+        singleton->logBottom->setX(singleton->logBottom->getX() - 2.7);
+    }
+    glutTimerFunc(singleton->interval, logTimer, id);
+}
 
 logObj::logObj(){
 
-    
+    logTop = new Sprite("images/Log.png", 1, 1, 0.0, 0.37, 0.55, 0.55);
+    logBottom = new Sprite("images/Log.png", 1, 1, 0.0, 0.1, 0.55, 0.55);
 
-    log = new Sprite("images/Log.png", 1, 4, 0.0, 0.1, 0.55, 0.55);
-    // car = new TexRect("images/YellowCar.png", 1.0, -0.6, 0.8, 0.8);
-    //car make object
-    //truck make object
+    interval = 50;
+
+    singleton = this;
+
+    logTimer(3);
 }
 
 void logObj::logDraw(){
-    log->draw();
+    logTop->draw();
+    logBottom->draw();
 }
 
 
@@ -24,10 +44,11 @@ void logObj::logDraw(){
 
 
 logObj::~logObj(){
-    delete log;
+    delete logTop;
+    delete logBottom;
     // delete car;
 
-    std::cout << "Deleting Objects..." << std::endl;
+    std::cout << "Deleting Log Objects..." << std::endl;
 }
 
 
