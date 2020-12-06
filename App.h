@@ -6,17 +6,15 @@
 #include "Rect.h"
 
 #include "TexRect.h"
-// #include "Entity.h"
 #include "Game.h"
 #include "Player.h"
 #include "Sprite.h"
+#include "Player.h"
 
 class App: public GlutApp {
 
-// std::vector<Shape*> shapes;
-// std::deque<player*> frog;
-    // std::deque<player*> player;
-    Game* game;
+    Game* game;     
+    bool showGame = false;
 
 public:
     
@@ -24,7 +22,9 @@ public:
     
     void draw() const;
     
-    void keyDown(unsigned char key, float x, float y);
+    void keyDown(unsigned char key, float , float );
+
+    
     
     ~App();
 };
