@@ -1,4 +1,5 @@
-#pragma once
+#ifndef PLAYER_H
+#define PLAYER_H
 
 #include <deque>
 #include <vector>
@@ -7,24 +8,46 @@
 #include "Rect.h"
 #include "Sprite.h"
 #include "carObj.h"
-// #include "logObj.h"
+#include "logObj.h"
 
 
 class Player: public Rect{
 
-    // static Player* singleton;
-    // std::vector<TexRect*> log;
-    Sprite* frog;
-    TexRect* log;
+    // logObj log;
+
+    Sprite* turtle;
+
+    Sprite* smoke;
+
+    // Sprite* log;
+
+    bool smokeVisible;
+    bool turtleVisable;
+
+    
+
 
 
 public:
     Player(); //default constructor
-    void frogDraw(); //to draw the player
+    void turtleDraw(); //to draw the player
 
     friend void timer(int id);
-    int interval;
+    friend void smokeTimer(int id);
 
+    unsigned int turtleInterval;
+    unsigned int smokeInterval;
+
+    void changePlayerState();
+
+    void changeSmokeState();
+
+    void smokeFunc(int id);
+
+    float returnX();
+    float returnY();
+    float returnW();
+    float returnH();
 
     void moveUp();
     void moveLeft();
@@ -33,8 +56,9 @@ public:
 
     bool collisionDetection(float x, float y);
 
-    friend void timer(int id);
-
     ~Player();
 
 };
+
+
+#endif
