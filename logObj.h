@@ -30,5 +30,6 @@ public:
 
     bool logCollision(float x, float y);
 
+
     ~logObj();
 };
