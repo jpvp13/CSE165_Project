@@ -42,12 +42,16 @@ void topCarTimer(int id){
 
 
 carObj::carObj(){
+    this->x = 0;
+    this->y = 0;
+    this->w = 0;
+    this->h = 0;
 
     fireTruck = new TexRect("images/fireTruck_Top.png", -0.9, 1.1, 0.8, 0.8);
     greenCar = new TexRect("images/GreenCar.png", -0.9, 0.78, 0.7, 0.7);
 
     blueCar = new TexRect("images/blueCar_bottom.png", 0.7, 0.0, 0.8, 0.8);
-    yellowCar = new TexRect("images/YellowCar.png", -0.9, -0.25, 0.8, 0.8);
+    yellowCar = new TexRect("images/YellowCar.png", -1.0, -0.25, 0.8, 0.8);
 
     bottomCarInterval = 50;
     topCarInterval = 50;
@@ -72,6 +76,76 @@ void carObj::carDraw(){
     blueCar->draw();
 }
 
+double carObj::blueX(){
+    return blueCar->getX();
+}
+
+double carObj::blueY(){
+    return blueCar->getY();
+}
+
+double carObj::blueW(){
+    return blueCar->getW();
+}
+
+double carObj::blueH(){
+    return blueCar->getH();
+}
+
+double carObj::yellowX(){
+    return yellowCar->getX();
+}
+
+double carObj::yellowY(){
+    return yellowCar->getY();
+}
+
+double carObj::yellowW(){
+    return yellowCar->getW();
+}
+
+double carObj::yellowH(){
+    return yellowCar->getH();
+}
+
+double carObj::greenX(){
+    return greenCar->getX();
+}
+
+double carObj::greenY(){
+    return greenCar->getY();
+}
+
+double carObj::greenW(){
+    return greenCar->getW();
+}
+
+double carObj::greenH(){
+    return greenCar->getH();
+}
+
+double carObj::truckX(){
+    return fireTruck->getX();
+}
+
+double carObj::truckY(){
+    return fireTruck->getY();
+}
+
+double carObj::truckW(){
+    return fireTruck->getW();
+}
+
+double carObj::truckH(){
+    return fireTruck->getH();
+}
+
+bool carObj::containsYellow(float x, float y)const {
+    return contains(x, y);
+}
+bool carObj::containsBlue(float x, float y)const {
+    return contains(x, y);
+}
 
 
 carObj::~carObj(){
@@ -82,24 +156,6 @@ carObj::~carObj(){
 
     std::cout << "Deleting Car Objects..." << std::endl;
 }
-
-
-// bool GameObj::objectCollision(float x, float y){
-
-    // if((frog->getY() >= log->getY() - log->getH() + 0.09) && (frog->getY() - frog->getH() <= log->getY() - 0.09) &&
-    // (frog->getX() <= log->getX() + log->getW() - 0.09) && (frog->getY() + frog->getW() >= log->getX() + 0.09)){
-    //     std::cout << "Oops...I hit the log" << std::endl;
-
-    //     std::cout << "I hit at X " << frog->getX() << " and Y " << frog->getY() << std::endl;
-    // }
-                // this is the orginal 
-    // if((frog->getY() >= log->getY() - log->getH() + 0.09) && (frog->getY() - frog->getH() <= log->getY() - 0.09) &&   //!This is collision detection for log
-    // (frog->getX() <= log->getX() + log->getW() - 0.09) && (frog->getX() + frog->getW() >= log->getX() + 0.09)){
-    //     std::cout << "Oops...I hit the river" << std::endl;
-
-    //     std::cout << "I hit at X " << frog->getX() << " and Y " << frog->getY() << std::endl;
-    // }
-// } 
 
 
 // make collision detection here for each object, not the user... Maybe collision detection may work better on the user though...
