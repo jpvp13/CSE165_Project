@@ -1,22 +1,27 @@
 #pragma once
 
-// #include "Entity.h"
-// #include "Rect.h"
-// #include "TexRect.h"
+#include "Rect.h"
+#include "TexRect.h"
 #include "Player.h"
 #include "Background.h"
 #include "logObj.h"
 #include "carObj.h"
+#include "StartScreen.h"
 
 
 
 class Game{
-    Player player;
-    logObj log;
-    carObj car;
-    Background background;
+    Player* player = new Player;
+    logObj* log = new logObj;
+    carObj* car = new carObj;
+    Background* background = new Background;
+    StartScreen* start = new StartScreen;
+    
 
-    // Player* player;
+    bool collisionState;
+    bool startScreen;
+    bool show;
+
 
 
 
@@ -24,11 +29,23 @@ public:
     Game();
 
     void drawgame();
+    void drawStartScreen();
+
+    bool showGame();
+    bool showGameFalse();
 
     void handles(unsigned char key, float x, float yt);
 
-    bool handleCollision(float x, float y);
+    bool handleYellowCollision(float Px, float Py);
 
-    // ~Game();
+    bool handleBlueCollision(float Px, float Py);
+
+    bool handleGreenCollision(float Px, float Py);
+
+    bool handleTruckCollision(float Px, float Py);
+
+    void renderText(std::string text, float x, float y, void* font , float r, float g, float b);
+
+    ~Game();
 
 };
