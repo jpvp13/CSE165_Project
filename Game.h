@@ -1,5 +1,7 @@
-#pragma once
+#ifndef GAME_H
+#define GAME_H
 
+#include "GlutApp.h"
 #include "Rect.h"
 #include "TexRect.h"
 #include "Player.h"
@@ -7,6 +9,7 @@
 #include "logObj.h"
 #include "carObj.h"
 #include "StartScreen.h"
+#include "endScreen.h"
 
 
 
@@ -16,11 +19,14 @@ class Game{
     carObj* car = new carObj;
     Background* background = new Background;
     StartScreen* start = new StartScreen;
+    endScreen* end;
     
 
     bool collisionState;
     bool startScreen;
-    bool show;
+    bool endState;
+    bool showLost;
+    bool stopGame;
 
 
 
@@ -30,22 +36,32 @@ public:
 
     void drawgame();
     void drawStartScreen();
+    void endScreen();
 
-    bool showGame();
-    bool showGameFalse();
+    bool stopGameReturn();
 
-    void handles(unsigned char key, float x, float yt);
+    bool endScreenState();
 
-    bool handleYellowCollision(float Px, float Py);
+    bool showEnd();
 
-    bool handleBlueCollision(float Px, float Py);
+    void handles(unsigned char key, float x, float y);
 
-    bool handleGreenCollision(float Px, float Py);
+    bool handleTopLogCollision();
 
-    bool handleTruckCollision(float Px, float Py);
+    bool handleBottomLogCollision();
+
+    bool handleYellowCollision();
+
+    bool handleBlueCollision();
+
+    bool handleGreenCollision();
+
+    bool handleTruckCollision();
 
     void renderText(std::string text, float x, float y, void* font , float r, float g, float b);
 
     ~Game();
 
 };
+
+#endif

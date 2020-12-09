@@ -47,11 +47,11 @@ carObj::carObj(){
     this->w = 0;
     this->h = 0;
 
-    fireTruck = new TexRect("images/fireTruck_Top.png", -0.9, 1.1, 0.8, 0.8);
-    greenCar = new TexRect("images/GreenCar.png", -0.9, 0.78, 0.7, 0.7);
+    fireTruck = new TexRect("images/fireTruck_Top.png", -0.9, 0.83, 0.3, 0.3);
+    greenCar = new TexRect("images/GreenCar.png", -0.9, 0.57, 0.32, 0.32);
 
-    blueCar = new TexRect("images/blueCar_bottom.png", 0.7, 0.0, 0.8, 0.8);
-    yellowCar = new TexRect("images/YellowCar.png", -1.0, -0.25, 0.8, 0.8);
+    blueCar = new TexRect("images/blueCar_bottom.png", 0.7, -0.23, 0.32, 0.32);
+    yellowCar = new TexRect("images/YellowCar.png", -1.0, -0.52, 0.32, 0.32);
 
     bottomCarInterval = 50;
     topCarInterval = 50;
