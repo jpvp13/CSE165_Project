@@ -50,7 +50,7 @@ Player::Player(){
 
     // logObj* log = new logObj;
 
-    turtle = new Sprite("images/turtleSprite.png", 1,4, 0.8, -0.8, 0.2, 0.2);
+    turtle = new Sprite("images/turtleSprite.png", 1,4, 0.8, -0.8, 0.15, 0.15);
     smoke = new Sprite("images/Smoke.png",1, 5, 0.0, -0.8, 0.6,0.6);
     
 
