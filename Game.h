@@ -24,6 +24,7 @@ class Game{
     bool startScreen;
     bool drawwin;
     bool drawlose;
+    bool startMoving;
 
 
 
@@ -32,7 +33,7 @@ public:
     Game();
 
     void drawgame();
-    
+
     void drawStartScreen();
 
     void drawEndLost();
