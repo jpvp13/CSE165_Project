@@ -20,8 +20,13 @@ public:
     void streetDraw();
     void riverDraw();
     void stagnantColor();
-    void gameArea();
+    void startArea();
+    void winArea();
 
+    double winX();
+    double winY();
+    double winW();
+    double winH();
 
     ~Background();
 };

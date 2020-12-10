@@ -7,7 +7,7 @@
 #include "Circle.h"
 #include "TexRect.h"
 #include "Sprite.h"
-// #include "Player.h"
+
 
 class carObj: public Rect{
     TexRect* yellowCar;
@@ -28,8 +28,8 @@ class carObj: public Rect{
 public:
     carObj();
     void carDraw();
-    bool containsYellow(float, float) const;
-    bool containsBlue(float, float) const;
+    // bool containsYellow(float, float) const;
+    // bool containsBlue(float, float) const;
     friend void timer(int id);
 
     friend void bottomCarTimer(int id);

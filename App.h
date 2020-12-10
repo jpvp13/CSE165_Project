@@ -13,7 +13,8 @@
 
 class App: public GlutApp {
 
-    Game* game;     
+    Game* game;  
+    bool showGame ;   
     
 
 public:
@@ -23,9 +24,7 @@ public:
     void draw() const;
     
     void keyDown(unsigned char key, float , float );
-    bool endGame = false;
-    bool showGame = false;
-    bool inGame = false;
+    
 
     
     

@@ -1,8 +1,5 @@
 #include <iostream>
 #include "carObj.h"
-// #include "GlutApp.h"
-
-//! h file has instance of frog and able to print out the coordinates as a test... need to figure out how to do collision detection cuzzzzz.... it no working
 
 static carObj* singleton;
 
@@ -11,7 +8,7 @@ void bottomCarTimer(int id){
     singleton->yellowCar->setX(singleton->yellowCar->getX() + 0.03);
 
     if(singleton->blueCar->getX() < - 2){
-        singleton->blueCar->setX(singleton->blueCar->getX() + 2.8);
+        singleton->blueCar->setX(singleton->blueCar->getX() + 2.9);
     }
 
     if(singleton->yellowCar->getX() > 1){
@@ -48,10 +45,10 @@ carObj::carObj(){
     this->h = 0;
 
     fireTruck = new TexRect("images/fireTruck_Top.png", -0.9, 0.83, 0.3, 0.3);
-    greenCar = new TexRect("images/GreenCar.png", -0.9, 0.57, 0.32, 0.32);
+    greenCar = new TexRect("images/GreenCar.png", -0.9, 0.52, 0.45, 0.18);
 
-    blueCar = new TexRect("images/blueCar_bottom.png", 0.7, -0.23, 0.32, 0.32);
-    yellowCar = new TexRect("images/YellowCar.png", -1.0, -0.52, 0.32, 0.32);
+    blueCar = new TexRect("images/blueCar_bottom.png", 1.1, -0.29, 0.45, 0.18);
+    yellowCar = new TexRect("images/YellowCar.png", -1.0, -0.58, 0.45, 0.18);
 
     bottomCarInterval = 50;
     topCarInterval = 50;
@@ -62,12 +59,7 @@ carObj::carObj(){
     topCarTimer(1);
     bottomCarTimer(2);
     
-    //car make object
-    //truck make object
 }
-
-
-
 
 void carObj::carDraw(){
     yellowCar->draw();
@@ -140,12 +132,12 @@ double carObj::truckH(){
     return fireTruck->getH();
 }
 
-bool carObj::containsYellow(float x, float y)const {
-    return contains(x, y);
-}
-bool carObj::containsBlue(float x, float y)const {
-    return contains(x, y);
-}
+// bool carObj::containsYellow(float x, float y)const {
+//     return contains(x, y);
+// }
+// bool carObj::containsBlue(float x, float y)const {
+//     return contains(x, y);
+// }
 
 
 carObj::~carObj(){
@@ -156,6 +148,3 @@ carObj::~carObj(){
 
     std::cout << "Deleting Car Objects..." << std::endl;
 }
-
-
-// make collision detection here for each object, not the user... Maybe collision detection may work better on the user though...

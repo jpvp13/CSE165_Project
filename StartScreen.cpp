@@ -48,6 +48,10 @@ void StartScreen::screenDraw(){
 
 }
 
+void StartScreen::blackDraw(){
+    blackScreen->draw();
+}
+
 StartScreen::~StartScreen(){
     delete menu;
     delete blackScreen;

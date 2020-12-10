@@ -11,155 +11,189 @@
 #endif
 
 Game::Game(){
-    
+   
+    startScreen = true;
+    drawwin = false;
+    drawlose = false;
+    repeat = false;
+
+    player = new Player;
+    log = new logObj;
+    car = new carObj;
+    background = new Background;
+    start = new StartScreen;
+
 }
 
 void Game::drawgame(){
+    
+    if(startScreen == true){
+        drawStartScreen();
+        startScreen = false;
+    } 
 
-    collisionState = false;
-    showLost = false;
-    startScreen = false;
-    endState = false;
-    stopGame = false;
+//###########working##################
+    if(startScreen == false){
+        background->stagnantColor();
+        background->riverDraw();
+        background->streetDraw();
+        background->startArea();
+        background->winArea();
+        car->carDraw();
+        log->logDraw();
+
+        player->turtleDraw();     //need to print last so user shows up ontop of objects
+
+        renderText("Starting Area", -0.2, -0.93,GLUT_BITMAP_TIMES_ROMAN_24, 0, 0, 0);
+        renderText("Goal!", -0.02, 0.89, GLUT_BITMAP_TIMES_ROMAN_24, 0, 0, 0);
+
+
+        if(drawwin == true){        //prints win screen
+            drawEndWin();
+        }
+
+        if(drawlose == true){       //pring lose screen
+            drawEndLost();
+        }
+    }
+    //#######################################
 
     
 
-    background->stagnantColor();
-    background->riverDraw();
-    background->streetDraw();
-    background->gameArea();
-    car->carDraw();
-    log->logDraw();
+}
 
-    player->turtleDraw();     //need to print last so user shows up ontop of objects
+void Game::drawEndLost(){
+    start->blackDraw();
 
-    renderText("Starting Area", -0.2, -0.93,GLUT_BITMAP_TIMES_ROMAN_24, 0, 0, 0);
-    renderText("Goal!", -0.02, 0.89, GLUT_BITMAP_TIMES_ROMAN_24, 0, 0, 0);
+    renderText("Game Over", -0.25, 0.2,GLUT_BITMAP_TIMES_ROMAN_24, 1, 1, 1);
+    renderText("Would You Like To Play Again?", -0.6, -0.1, GLUT_BITMAP_TIMES_ROMAN_24, 1, 1, 1);
+    renderText("Press -> 'ESC'<- to exit, then reload to play again! ", -0.8, -0.4,GLUT_BITMAP_TIMES_ROMAN_24, 1, 1, 1);
+}
 
-    
+void Game::drawEndWin(){
+    start->blackDraw();
 
+    renderText("You Win!", -0.25, 0.2,GLUT_BITMAP_TIMES_ROMAN_24, 1, 1, 1);
+    renderText("Would You Like To Play Again?", -0.6, -0.1, GLUT_BITMAP_TIMES_ROMAN_24, 1, 1, 1);
+    renderText("Press -> 'ESC'<- to exit, then reload to play again!", -0.8, -0.4,GLUT_BITMAP_TIMES_ROMAN_24, 1, 1, 1);
 }
 
 void Game::drawStartScreen(){
-
     start->screenDraw();
-
-    startScreen = true;
 }
 
-void Game::endScreen(){
-    
-    end->endScreenDraw();
-
-    endState = true;
-
-        // endScreenState();
-
-}
-
-bool Game::endScreenState(){
-    return endState;
-}
-
-bool Game::showEnd(){
-    return showLost;
-}
-
-bool Game::stopGameReturn(){
-    return stopGame;
-}
 
 void Game::handles(unsigned char key, float x, float y){  //this physically handles the frog moving during the game
-    
-    if( startScreen == false) {
-        if(player->returnX() >= -1.0 && player->returnX() < 1.0){
-            // if(player->returnY() >= -1){
 
-                switch(key){
+        switch(key){
+            
+            case 'w':
 
-                    case 'w':
-                        
-                                
+                player->moveUp();
 
-                        player->moveUp();
+                if(handleWinArea() == true){
+                    //change state to win and display win screen
+                    std::cout << "I win :)" << std::endl;
+                    
+                    drawwin = true;
+                    break;
 
-                        if(handleYellowCollision() == true || handleBlueCollision() == true || 
-                            handleGreenCollision() == true || handleTruckCollision() == true ||
-                            handleTopLogCollision() == true || handleBottomLogCollision() == true){
-                            std::cout << "I DIED AHHH" << std::endl;
+                } else if(handleYellowCollision() == true || handleBlueCollision() == true || 
+                    handleGreenCollision() == true || handleTruckCollision() == true ||
+                    handleTopLogCollision() == true || handleBottomLogCollision() == true){
 
-                            endState = true;
-                           
-                        }
-
-                        
-
-                        std::cout << "value of X from Game.cpp moveUp : " << player->returnX() << std::endl;
-                        std::cout << "value of Y from Game.cpp moveUp : " << player->returnY() << std::endl;
-
-
-                        
-                        player->redraw();
-                        // }
-                        break;
-
-                    case 'a':
-
-                        player->moveLeft();
-
-                        if(handleYellowCollision() == true || handleBlueCollision() == true || 
-                            handleGreenCollision() == true || handleTruckCollision() == true ||
-                            handleTopLogCollision() == true || handleBottomLogCollision() == true){
-                            std::cout << "I DIED AHHH" << std::endl;
-
-                            endState = true;
-                           
-                        }
-                        std::cout << "value of X from Game.cpp moveLeft : " << player->returnX() << std::endl;
-
-                        player->redraw(); //this comes from newly created func in Rect
-                        // }
-                        break;
-
-                    case 'd':
-
-                        player->moveRight();
-
-                        if(handleYellowCollision() == true || handleBlueCollision() == true || 
-                            handleGreenCollision() == true || handleTruckCollision() == true ||
-                            handleTopLogCollision() == true || handleBottomLogCollision() == true){
-                            std::cout << "I DIED AHHH" << std::endl;
-
-                            endState = true;
-                           
-                        }
-
-                        std::cout << "value of X from Game.cpp moveRight : " << player->returnX() << std::endl;
-
-                        player->redraw();    //this comes from newly created func in Rect
-                        // }
-                        break;
-
-                    case 's':
-
-                        player->moveDown();
-
-                        if(handleYellowCollision() == true || handleBlueCollision() == true || 
-                            handleGreenCollision() == true || handleTruckCollision() == true ||
-                            handleTopLogCollision() == true || handleBottomLogCollision() == true){
-                            std::cout << "I DIED AHHH" << std::endl;
-
-                            endState = true;
-                           
-                        }
-                        std::cout << "value of X from Game.cpp moveDown : " << player->returnX() << std::endl;
-
-                        player->redraw();   //this comes from newly created func in Rec
-                        // }
-                        break;
+                    drawlose = true;
+                    break;
+                
                 }
-            // }
+                
+                player->redraw();
+                break;
+
+            case 'a':
+
+                player->moveLeft();
+
+                // if(handleWinArea() == true){
+                //     showWin = true;
+                //     drawgame();
+
+                // } else {
+
+                    if(handleYellowCollision() == true || handleBlueCollision() == true || 
+                        handleGreenCollision() == true || handleTruckCollision() == true ||
+                        handleTopLogCollision() == true || handleBottomLogCollision() == true){
+
+                        drawlose = true;
+                        break;
+                    
+                    }
+                // }
+
+                player->redraw(); //this comes from newly created func in Rect
+                // }
+                break;
+
+            case 'd':
+
+                player->moveRight();
+
+                // if(handleWinArea() == true){
+                //     //change state to win and display win screen
+                //     std::cout << "I win :)" << std::endl;
+                //     showWin = true;
+                //     // endState = true;
+                //     drawgame();
+                // } else {
+
+                    if(handleYellowCollision() == true || handleBlueCollision() == true || 
+                        handleGreenCollision() == true || handleTruckCollision() == true ||
+                        handleTopLogCollision() == true || handleBottomLogCollision() == true){
+
+                        drawlose = true;
+                        break;
+                    
+                    }
+                // }
+
+                player->redraw();    //this comes from newly created func in Rect
+                break;
+
+            case 's':
+
+                player->moveDown();
+
+                // if(handleWinArea() == true){
+                //     //change state to win and display win screen
+                //     showWin = true;
+                //     drawgame();
+                // } else {
+
+                    if(handleYellowCollision() == true || handleBlueCollision() == true || 
+                        handleGreenCollision() == true || handleTruckCollision() == true ||
+                        handleTopLogCollision() == true || handleBottomLogCollision() == true){
+ 
+                        drawlose = true;
+                        break;
+                    
+                    }
+                // }
+
+                player->redraw();   //this comes from newly created func in Rec
+                break;
         }
+}
+
+// void Game::resetPlayer(){
+//     player->setY(player->getY() -1.7);
+// }
+
+bool Game::handleWinArea(){
+    if( (player->returnY() >= 0.85) && player->returnY() <= 1 ){
+        std::cout << "I Win!" << std::endl;
+        return true;
+    } else {
+        return false;
     }
 }
 
@@ -168,12 +202,9 @@ bool Game::handleYellowCollision(){
 
     if( (player->returnY() >= car->yellowY() - car->yellowH() + 0.05 ) && (player->returnY() - player->returnH() <= car->yellowY() - 0.05) && 
         (player->returnX() <= car->yellowX() + car->yellowW() + 0.05 ) && (player->returnX() + player->returnW() >= car->yellowX() - 0.05) ){
-            std::cout << "Yellow Car Hit" << std::endl;
-            
-
-            return true;
-        }
-    else {
+        std::cout << "Yellow Car Hit" << std::endl;
+        return true;
+    } else {
         return false;
     }
 }
@@ -184,11 +215,8 @@ bool Game::handleBlueCollision(){
     if( (player->returnY() >= car->blueY() - car->blueH() + 0.05  ) && (player->returnY() - player->returnH() <= car->blueY() - 0.05) && 
         (player->returnX() <= car->blueX() + car->blueW() + 0.05  ) && (player->returnX() + player->returnW() >= car->blueX() - 0.05) ){
             std::cout << "Blue Car Hit" << std::endl;
-        
-
             return true;
-        }
-    else {
+        } else {
         return false;
     }
 }
@@ -197,12 +225,9 @@ bool Game::handleGreenCollision(){
     
     if( (player->returnY() >= car->greenY() - car->greenH() + 0.05  ) && (player->returnY() - player->returnH() <= car->greenY() - 0.05) && 
         (player->returnX() <= car->greenX() + car->greenW() + 0.05  ) && (player->returnX() + player->returnW() >= car->greenX() - 0.05) ){
-            std::cout << "green Car Hit" << std::endl;
-            
-
-            return true;
-        }
-    else {
+        std::cout << "green Car Hit" << std::endl;
+        return true;
+    } else {
         return false;
     }
 }
@@ -215,36 +240,19 @@ bool Game::handleTruckCollision(){
     if( (player->returnY() >= car->truckY() - car->truckH() + 0.05  ) && (player->returnY() - player->returnH() <= car->truckY() - 0.05) && 
         (player->returnX() <= car->truckX() + car->truckW() + 0.05  ) && (player->returnX() + player->returnW() >= car->truckX() - 0.05) ){
             std::cout << "truck Hit" << std::endl;
-            
-
-
             return true;
-        }
-    else {
+    } else {
         return false;
     }
-}
-
-Game::~Game(){   
-    delete player;
-    delete car;
-    delete log;
-    delete background;
-
-    std::cout << "Deleting Game..." << std::endl;
 }
 
 bool Game::handleBottomLogCollision(){
 
     if( (player->returnY() >= log->logBottomY() - log->logBottomH() + 0.05  ) && (player->returnY() - player->returnH() <= log->logBottomY() - 0.05) && 
         (player->returnX() <= log->logBottomX() + log->logBottomW() + 0.05  ) && (player->returnX() + player->returnW() >= log->logBottomX() - 0.05) ){
-            std::cout << "Bottom log Hit" << std::endl;
-            
-
-
-            return true;
-        }
-    else {
+        std::cout << "Bottom log Hit" << std::endl;
+        return true;
+    } else {
         return false;
     }
 
@@ -254,18 +262,12 @@ bool Game::handleBottomLogCollision(){
 bool Game::handleTopLogCollision(){
     if( (player->returnY() >= log->logTopY() - log->logTopH() - 0.05  ) && (player->returnY() - player->returnH() <= log->logTopY() + 0.01) && 
         (player->returnX() <= log->logTopX() + log->logTopW() - 0.05  ) && (player->returnX() + player->returnW() >= log->logTopX() + 0.01) ){
-            std::cout << "Top Log Hit" << std::endl;
-            
-
-
-            return true;
-        }
-    else {
+        std::cout << "Top Log Hit" << std::endl;
+        return true;
+    } else {
         return false;
     }
 }
-
-
 
 void Game::renderText(std::string text, float x, float y, void* font = GLUT_BITMAP_HELVETICA_18, float r = 1, float g = 1, float b = 1){
     glColor3f(r, g, b);
@@ -276,4 +278,13 @@ void Game::renderText(std::string text, float x, float y, void* font = GLUT_BITM
         int w = glutBitmapWidth(font, text[i]);
         offset += ((float)w / 600)*2;
     }
+}
+
+Game::~Game(){   
+    delete player;
+    delete car;
+    delete log;
+    delete background;
+
+    std::cout << "Deleting Game..." << std::endl;
 }
