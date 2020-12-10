@@ -12,6 +12,7 @@
 
 Game::Game(){
    
+    startMoving = false;
     startScreen = true;
     drawwin = false;
     drawlose = false;
@@ -30,6 +31,7 @@ void Game::drawgame(){
     if(startScreen == true){
         drawStartScreen();
         startScreen = false;
+        startMoving = true;     //##################
     } 
 
 //###########working##################
@@ -84,7 +86,7 @@ void Game::drawStartScreen(){
 
 
 void Game::handles(unsigned char key, float x, float y){  //this physically handles the frog moving during the game
-
+        if(startMoving == true){
         switch(key){
             
             case 'w':
@@ -182,6 +184,7 @@ void Game::handles(unsigned char key, float x, float y){  //this physically hand
                 player->redraw();   //this comes from newly created func in Rec
                 break;
         }
+    }
 }
 
 // void Game::resetPlayer(){
