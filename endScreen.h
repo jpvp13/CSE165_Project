@@ -17,9 +17,6 @@ public:
 
     void endScreenDraw();
 
-    void renderText(std::string text, float x, float y, void* font , float r, float g, float b);
-
-
     ~endScreen();
 
 };

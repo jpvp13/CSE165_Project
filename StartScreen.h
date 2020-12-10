@@ -21,6 +21,8 @@ public:
 
     void screenDraw();
 
+    void blackDraw();
+
     friend void StartScreentimer(int id);
 
     unsigned int turtleInterval;

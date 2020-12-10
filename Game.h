@@ -14,19 +14,16 @@
 
 
 class Game{
-    Player* player = new Player;
-    logObj* log = new logObj;
-    carObj* car = new carObj;
-    Background* background = new Background;
-    StartScreen* start = new StartScreen;
-    endScreen* end;
+    Player* player;
+    logObj* log;
+    carObj* car;
+    Background* background;
+    StartScreen* start; 
     
-
-    bool collisionState;
+    bool repeat;
     bool startScreen;
-    bool endState;
-    bool showLost;
-    bool stopGame;
+    bool drawwin;
+    bool drawlose;
 
 
 
@@ -35,16 +32,14 @@ public:
     Game();
 
     void drawgame();
+    
     void drawStartScreen();
-    void endScreen();
 
-    bool stopGameReturn();
+    void drawEndLost();
 
-    bool endScreenState();
+    void drawEndWin();
 
-    bool showEnd();
-
-    void handles(unsigned char key, float x, float y);
+    bool handleWinArea();
 
     bool handleTopLogCollision();
 
@@ -59,6 +54,10 @@ public:
     bool handleTruckCollision();
 
     void renderText(std::string text, float x, float y, void* font , float r, float g, float b);
+
+    // void resetPlayer();
+
+    void handles(unsigned char key, float x, float y);
 
     ~Game();
 

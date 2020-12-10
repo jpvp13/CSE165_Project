@@ -17,11 +17,11 @@ class Player: public Rect{
 
     Sprite* turtle;
 
-    Sprite* smoke;
+    // Sprite* smoke;
 
     // Sprite* log;
 
-    bool smokeVisible;
+    // bool smokeVisible;
     bool turtleVisable;
 
     
@@ -33,16 +33,16 @@ public:
     void turtleDraw(); //to draw the player
 
     friend void timer(int id);
-    friend void smokeTimer(int id);
+    // friend void smokeTimer(int id);
 
     unsigned int turtleInterval;
-    unsigned int smokeInterval;
+    // unsigned int smokeInterval;
 
-    void changePlayerState();
+    // void changePlayerState();
 
-    void changeSmokeState();
+    // void changeSmokeState();
 
-    void smokeFunc(int id);
+    // void smokeFunc(int id);
 
     float returnX();
     float returnY();
@@ -54,7 +54,7 @@ public:
     void moveRight();
     void moveDown(); 
 
-    bool collisionDetection(float x, float y);
+    // bool collisionDetection(float x, float y);
 
     ~Player();
 

@@ -1,6 +1,5 @@
 #include <iostream>
 #include "logObj.h"
-#include "GlutApp.h"
 
 
 #if defined WIN32
@@ -13,9 +12,6 @@
 
 
 static logObj* singleton;
-
-
-
 
 void logTimer(int id){
     singleton->logTop->setX(singleton->logTop->getX() - 0.03);
@@ -83,16 +79,9 @@ double logObj::logBottomH(){
     return logBottom->getH();
 }
 
-
-
 logObj::~logObj(){
     delete logTop;
     delete logBottom;
-    // delete car;
 
     std::cout << "Deleting Log Objects..." << std::endl;
 }
-
-
-
-
