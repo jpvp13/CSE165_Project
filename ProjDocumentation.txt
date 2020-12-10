@@ -1,0 +1,20 @@
+***Project created by John Villalvazo***
+***Fall 2020 UC Merced***
+***Object Oriented Programming***
+***Completed 12/9/2020***
+
+Credit:
+~ All vehichles and log came from this one sprite sheet:
+~ https://www.clipartkey.com/view/xxboTb_frogger-sprite-sheet/
+
+~ Turtle sprite sheet:
+~ https://pixeljoint.com/files/icons/full/capture__r1068469131.png
+
+~ Original Water image (which was cut and edited to fit my needs):
+~ https://cdn3.vectorstock.com/i/1000x1000/26/17/seamless-pattern-in-a-water-surface-vector-23012617.jpg
+
+~ Street Image:
+~ https://webstockreview.net/images/highway-clipart-road-scene-3.jpg
+
+~ Menu screen original art created by:
+~ Liani Yong via Ipad
